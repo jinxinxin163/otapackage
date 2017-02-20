@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<DeployDescription>
+  <DeploySetting>
+    <DeployFileName>testhello/install.sh</DeployFileName>
+    <DeployNotifyType>0</DeployNotifyType>
+    <DeployAction></DeployAction>
+  </DeploySetting>
+</DeployDescription>
