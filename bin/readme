@@ -1,7 +1,7 @@
-./otapackager.sh $buildname $type $version $os $arch $filename $notifytype
+i./otapackager.sh $buildname $type $version $os $arch $filename $notifytype
 
 eg_1: bsp package
 ./otapackager.sh am57xx_linux4.4-45  rsb 1.0.0.2 yocto arm rsb/install.sh 0
 
 eg_2: app testhello package
-./otapackager.sh am335x  testhello  1.0.0.0 yocto arm install.sh 0
+./otapackager.sh am335x  testhello  1.0.0.0 yocto arm install.sh preinstall.sh 0

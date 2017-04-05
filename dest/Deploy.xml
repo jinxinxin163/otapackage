@@ -2,6 +2,7 @@
 <DeployDescription>
   <DeploySetting>
     <DeployFileName>testhello/install.sh</DeployFileName>
+    <PreDeployFileName>testhello/preinstall.sh</PreDeployFileName>
     <DeployNotifyType>0</DeployNotifyType>
     <DeployAction></DeployAction>
   </DeploySetting>

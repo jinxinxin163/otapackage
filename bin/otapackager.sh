@@ -1,8 +1,8 @@
 #!/bin/bash
-if [ -z $1 ]||[ -z $2 ]||[ -z $3 ]||[ -z $4 ]||[ -z $5 ]||[ -z $6 ]||[ -z $7 ]; then
+if [ -z $1 ]||[ -z $2 ]||[ -z $3 ]||[ -z $4 ]||[ -z $5 ]||[ -z $6 ]||[ -z $7 ]||[ -z $8 ]; then
 cat << EOF
 EXAMPLE:
-    $0 $buildname $type $version $os $arch $filename $notifytype
+    $0 $buildname $type $version $os $arch $filename $prefilename $notifytype
 EOF
     exit 1
 fi
@@ -13,7 +13,8 @@ version=$3
 os=$4
 arch=$5
 filename=$6
-notifytype=$7
+prefilename=$7
+notifytype=$8
 
 mypwd=`pwd`
 rootdir=$mypwd/../
@@ -36,6 +37,7 @@ cp -rfa $rootdir/etc/PackageInfo.xml ./
 cp -rfa $rootdir/etc/Deploy.xml ./
 mkdir -p  $dtype && cd $dtype
 cp -rfa $rootdir/src/$filename  ./
+cp -rfa $rootdir/src/$prefilename  ./
 cp -rfa $rootdir/src/$dtype  ./
 cd ../
 ## ├── dest
@@ -47,6 +49,7 @@ cd ../
 ## update Deploy.xml
 echo "File is ready"
 awk '{if(/DeployFileName/){sub(/>[^<]*</,">'"$dtype/$filename"'<")} {print > "Deploy.xml"}}' Deploy.xml
+awk '{if(/PreDeployFileName/){sub(/>[^<]*</,">'"$dtype/$prefilename"'<")} {print > "Deploy.xml"}}' Deploy.xml
 awk '{if(/DeployNotifyType/){sub(/>[^<]*</,">'"$notifytype"'<")} {print > "Deploy.xml"}}' Deploy.xml
 # zip to zip1
 passwd=`date +%s%N | md5sum | head -c 8`
