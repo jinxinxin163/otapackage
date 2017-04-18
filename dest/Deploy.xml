@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <DeployDescription>
   <DeploySetting>
-    <DeployFileName>testhello/install.sh</DeployFileName>
-    <PreDeployFileName>testhello/preinstall.sh</PreDeployFileName>
+    <DeployFileName>fslbsp/status.sh</DeployFileName>
+    <PreDeployFileName>fslbsp/install.sh</PreDeployFileName>
     <DeployNotifyType>0</DeployNotifyType>
     <DeployAction></DeployAction>
   </DeploySetting>

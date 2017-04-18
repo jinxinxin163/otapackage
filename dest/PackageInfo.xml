@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <PackageDescription>
   <BaseSettings>
-    <PackageType>testhello</PackageType>
+    <PackageType>fslbsp</PackageType>
     <Version>1.0.0.0</Version>
-    <OS></OS>
-    <Arch></Arch>
+    <OS>yocto</OS>
+    <Arch>arm</Arch>
   </BaseSettings>
-  <Password>4Pr25TELHHc=</Password>
+  <Password>YFY8CoIt3ck=</Password>
 </PackageDescription>

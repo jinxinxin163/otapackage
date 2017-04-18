@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<DeployDescription>
+  <DeploySetting>
+    <DeployFileName>rsb/install.sh</DeployFileName>
+    <PreDeployFileName>rsb/preinstall.sh</PreDeployFileName>
+    <DeployNotifyType>0</DeployNotifyType>
+    <DeployAction></DeployAction>
+  </DeploySetting>
+</DeployDescription>

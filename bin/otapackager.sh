@@ -1,20 +1,25 @@
 #!/bin/bash
-if [ -z $1 ]||[ -z $2 ]||[ -z $3 ]||[ -z $4 ]||[ -z $5 ]||[ -z $6 ]||[ -z $7 ]||[ -z $8 ]; then
+if [ $# !=  7 ] && [ $# != 8 ]; then
 cat << EOF
 EXAMPLE:
-    $0 $buildname $type $version $os $arch $filename $prefilename $notifytype
+    $0 type version os arch imagefile installscript [preinstallscript] notifytype
 EOF
     exit 1
 fi
 
-buildname=$1
-dtype=$2
-version=$3
-os=$4
-arch=$5
-filename=$6
-prefilename=$7
+dtype=$1
+version=$2
+os=$3
+arch=$4
+imagefile=$5
+installscript=$6
+if [ $# -eq  8 ]; then
+preinstallscript=$7
 notifytype=$8
+else
+preinstallscript="null"
+notifytype=$7
+fi
 
 mypwd=`pwd`
 rootdir=$mypwd/../
@@ -34,11 +39,17 @@ fi
 mkdir -p $otadir && cd $otadir
 echo "Prepare files"
 cp -rfa $rootdir/etc/PackageInfo.xml ./
-cp -rfa $rootdir/etc/Deploy.xml ./
+if [ "null" != "$preinstallscript" ] ; then
+	cp -rfa $rootdir/etc/Deploy1.xml ./Deploy.xml
+else
+	cp -rfa $rootdir/etc/Deploy2.xml ./Deploy.xml
+fi
 mkdir -p  $dtype && cd $dtype
-cp -rfa $rootdir/src/$filename  ./
-cp -rfa $rootdir/src/$prefilename  ./
-cp -rfa $rootdir/src/$dtype  ./
+cp -rfa $rootdir/src/$installscript  ./
+if [ "null" != "$preinstallscript" ] ; then
+	cp -rfa $rootdir/src/$preinstallscript  ./
+fi
+cp -rfa $rootdir/src/$imagefile  ./
 cd ../
 ## ├── dest
 ## │   ├── rsb			──│
@@ -48,8 +59,10 @@ cd ../
 ## │   ├── PackageInfo.xml
 ## update Deploy.xml
 echo "File is ready"
-awk '{if(/DeployFileName/){sub(/>[^<]*</,">'"$dtype/$filename"'<")} {print > "Deploy.xml"}}' Deploy.xml
-awk '{if(/PreDeployFileName/){sub(/>[^<]*</,">'"$dtype/$prefilename"'<")} {print > "Deploy.xml"}}' Deploy.xml
+awk '{if(/DeployFileName/){sub(/>[^<]*</,">'"$dtype/$installscript"'<")} {print > "Deploy.xml"}}' Deploy.xml
+if [ "null" != $preinstallscript ] ; then
+	awk '{if(/PreDeployFileName/){sub(/>[^<]*</,">'"$dtype/$preinstallscript"'<")} {print > "Deploy.xml"}}' Deploy.xml
+fi
 awk '{if(/DeployNotifyType/){sub(/>[^<]*</,">'"$notifytype"'<")} {print > "Deploy.xml"}}' Deploy.xml
 # zip to zip1
 passwd=`date +%s%N | md5sum | head -c 8`
@@ -61,8 +74,8 @@ desd=`$bindir/enc $passwd`
 echo "encrypted passwd is :$desd"
 awk '{if(/PackageType/){sub(/>[^<]*</,">'"$dtype"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
 awk '{if(/Version/){sub(/>[^<]*</,">'"$version"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
-# awk '{if(/OS/){sub(/>[^<]*</,">'"$os"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
-# awk '{if(/Arch/){sub(/>[^<]*</,">'"$arch"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
+awk '{if(/OS/){sub(/>[^<]*</,">'"$os"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
+awk '{if(/Arch/){sub(/>[^<]*</,">'"$arch"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
 awk '{if(/Password/){sub(/>[^<]*</,">'"$desd"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
 # zip to zip2
 zip -q -r ${dtype}-v${version}.zip  $dtype.zip PackageInfo.xml
