@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <PackageDescription>
   <BaseSettings>
-    <PackageType>fslbsp</PackageType>
+    <PackageType>AndroidBsp</PackageType>
     <Version>1.0.0.0</Version>
-    <OS>yocto</OS>
-    <Arch>arm</Arch>
+    <OS>fsl-imx-x11-4.1.15-2.0.0</OS>
+    <Arch>armv7l</Arch>
   </BaseSettings>
-  <Password>YFY8CoIt3ck=</Password>
+  <Password>byuw5aa+DJQ=</Password>
 </PackageDescription>

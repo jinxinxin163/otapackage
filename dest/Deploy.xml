@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <DeployDescription>
   <DeploySetting>
-    <DeployFileName>fslbsp/status.sh</DeployFileName>
-    <PreDeployFileName>fslbsp/install.sh</PreDeployFileName>
+    <DeployFileName>AndroidBsp/adstatus.sh</DeployFileName>
+    <PreDeployFileName>AndroidBsp/adinstall.sh</PreDeployFileName>
     <DeployNotifyType>0</DeployNotifyType>
     <DeployAction></DeployAction>
   </DeploySetting>
