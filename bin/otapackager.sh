@@ -74,8 +74,8 @@ desd=`$bindir/enc $passwd`
 echo "encrypted passwd is :$desd"
 awk '{if(/PackageType/){sub(/>[^<]*</,">'"$dtype"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
 awk '{if(/Version/){sub(/>[^<]*</,">'"$version"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
-awk '{if(/OS/){sub(/>[^<]*</,">'"$os"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
-awk '{if(/Arch/){sub(/>[^<]*</,">'"$arch"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
+#awk '{if(/OS/){sub(/>[^<]*</,">'"$os"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
+#awk '{if(/Arch/){sub(/>[^<]*</,">'"$arch"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
 awk '{if(/Password/){sub(/>[^<]*</,">'"$desd"'<")} {print > "PackageInfo.xml"}}' PackageInfo.xml
 # zip to zip2
 zip -q -r ${dtype}-v${version}.zip  $dtype.zip PackageInfo.xml

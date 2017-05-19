@@ -3,8 +3,8 @@
   <BaseSettings>
     <PackageType>AndroidBsp</PackageType>
     <Version>1.0.0.0</Version>
-    <OS>fsl-imx-x11-4.1.15-2.0.0</OS>
-    <Arch>armv7l</Arch>
+    <OS></OS>
+    <Arch></Arch>
   </BaseSettings>
-  <Password>byuw5aa+DJQ=</Password>
+  <Password>mEQpIh3Xb7E=</Password>
 </PackageDescription>
