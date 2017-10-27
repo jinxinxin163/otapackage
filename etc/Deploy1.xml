@@ -2,7 +2,8 @@
 <DeployDescription>
   <DeploySetting>
     <DeployFileName>rsb/install.sh</DeployFileName>
-    <PreDeployFileName>rsb/preinstall.sh</PreDeployFileName>
+    <ResultCheckScript>rsb/status.sh</ResultCheckScript>
+    <RebootFlag>1</RebootFlag>
     <DeployNotifyType>0</DeployNotifyType>
     <DeployAction></DeployAction>
   </DeploySetting>

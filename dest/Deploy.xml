@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<DeployDescription>
-  <DeploySetting>
-    <DeployFileName>AndroidBsp/adstatus.sh</DeployFileName>
-    <PreDeployFileName>AndroidBsp/adinstall.sh</PreDeployFileName>
-    <DeployNotifyType>0</DeployNotifyType>
-    <DeployAction></DeployAction>
-  </DeploySetting>
-</DeployDescription>

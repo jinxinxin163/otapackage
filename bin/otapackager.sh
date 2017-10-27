@@ -59,11 +59,13 @@ cd ../
 ## │   ├── PackageInfo.xml
 ## update Deploy.xml
 echo "File is ready"
-awk '{if(/DeployFileName/){sub(/>[^<]*</,">'"$dtype/$installscript"'<")} {print > "Deploy.xml"}}' Deploy.xml
 if [ "null" != $preinstallscript ] ; then
-	awk '{if(/PreDeployFileName/){sub(/>[^<]*</,">'"$dtype/$preinstallscript"'<")} {print > "Deploy.xml"}}' Deploy.xml
+	awk '{if(/DeployFileName/){sub(/>[^<]*</,">'"$dtype/$preinstallscript"'<")} {print > "Deploy.xml"}}' Deploy.xml
+	awk '{if(/ResultCheckScript/){sub(/>[^<]*</,">'"$dtype/$installscript"'<")} {print > "Deploy.xml"}}' Deploy.xml
+else
+	awk '{if(/DeployFileName/){sub(/>[^<]*</,">'"$dtype/$installscript"'<")} {print > "Deploy.xml"}}' Deploy.xml	
 fi
-awk '{if(/DeployNotifyType/){sub(/>[^<]*</,">'"$notifytype"'<")} {print > "Deploy.xml"}}' Deploy.xml
+awk '{if(/RebootFlag/){sub(/>[^<]*</,">'"1"'<")} {print > "Deploy.xml"}}' Deploy.xml
 # zip to zip1
 passwd=`date +%s%N | md5sum | head -c 8`
 zip -q -r -P $passwd $dtype.zip $dtype Deploy.xml
