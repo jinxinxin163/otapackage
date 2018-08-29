@@ -13,3 +13,9 @@ eg_3: andorid bsp(need reboot)
 
 eg_4: android app
 ./otapackager.sh a 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l helloapk-v3.tar.bz2 apkinstall.sh 0
+
+eg_5: android script test
+./otapackager.sh a 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l testhello adtestdo.sh 0
+
+eg_6: android script test(reboot)
+./otapackager.sh androidshell 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l testhello adstatus.sh adinstall.sh 0
