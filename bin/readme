@@ -6,10 +6,10 @@ eg_1: app testhello package
 ./otapackager.sh testhello 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l testhello testhello.sh  0
 
 eg_2: linux bsp
-./otapackager.sh AdvBsp 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l update.zip status.sh install.sh 0
+./otapackager.sh AdvBsp 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l update.zip lxstatus.sh lxinstall.sh 0
 
 eg_3: andorid bsp(need reboot)
-./otapackager.sh AndroidBsp 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l update.zip adstatus.sh adinstall.sh 0
+./otapackager.sh AndroidBsp 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l update.zip adbspstatus.sh adbspinstall.sh 0
 
 eg_4: android app
 ./otapackager.sh a 1.0.0.0 fsl-imx-x11-4.1.15-2.0.0 armv7l helloapk-v3.tar.bz2 apkinstall.sh 0
